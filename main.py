@@ -18,9 +18,6 @@ def clearAll() :
     dayField.delete(0, END) 
     monthField.delete(0, END) 
     yearField.delete(0, END) 
-    givenDayField.delete(0, END) 
-    givenMonthField.delete(0, END) 
-    givenYearField.delete(0, END) 
     rsltDayField.delete(0, END) 
     rsltMonthField.delete(0, END) 
     rsltYearField.delete(0, END) 
@@ -42,7 +39,7 @@ def checkError() :
         # clearAll function calling 
         clearAll() 
           
-        return -1
+        return True
 
 #Function to Calculate the age
 def calculateAge():
@@ -50,10 +47,8 @@ def calculateAge():
     #check for error
     value = checkError()
 
-    
-
     #if there is a error then value will be - 1
-    if value==-1:
+    if value== True:
         return
 
     else:
@@ -62,14 +57,10 @@ def calculateAge():
         birth_day = int(dayField.get()) 
         birth_month = int(monthField.get()) 
         birth_year = int(yearField.get()) 
-  
-        given_day = int(givenDayField.get()) 
-        given_month = int(givenMonthField.get()) 
-        given_year = int(givenYearField.get()) 
           
           
         # if birth date is greater then given birth_month  
-        # then donot count this month and add 30 to the date so  
+        # then do not count this month and add 30 to the date so  
         # as to subtract the date and get the remaining days  
         month =[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] 
           
@@ -135,15 +126,6 @@ if __name__ == '__main__':
     # Create a Year : label 
     year = Label(root, text = 'Year', bg = 'light green')
 
-    # Create a Given Day : label 
-    givenDay = Label(root, text = "Given Day", bg = "light green")
-
-    # Create a Given Month : label 
-    givenMonth = Label(root, text = "Given Month", bg = "light green")
-
-    # Create a Given Year : label 
-    givenYear = Label(root, text = "Given Year", bg = "light green")
-
     # Create a Years : label 
     rsltYear = Label(root, text = "Years", bg = "light green")
 
@@ -157,10 +139,6 @@ if __name__ == '__main__':
     dayField = Entry(root)
     monthField = Entry(root)
     yearField = Entry(root)
-  
-    givenDayField = Entry(root)
-    givenMonthField = Entry(root)
-    givenYearField = Entry(root) 
       
     rsltYearField = Entry(root) 
     rsltMonthField = Entry(root) 
@@ -190,18 +168,7 @@ if __name__ == '__main__':
     year.grid(row = 3, column = 0) 
     yearField.grid(row = 3, column = 1) 
       
-    givenDate.grid(row = 0, column = 4)
-    birthDate.grid(row = 0, column = 1) 
-      
-    givenDay.grid(row = 1, column = 3) 
-    givenDayField.grid(row = 1, column = 4) 
-      
-    givenMonth.grid(row = 2, column = 3) 
-    givenMonthField.grid(row = 2, column = 4) 
-      
-    givenYear.grid(row = 3, column = 3) 
-    givenYearField.grid(row = 3, column = 4) 
-      
+    birthDate.grid(row = 0, column = 1)    
     resultantAge.grid(row = 4, column = 2) 
       
     rsltYear.grid(row = 5, column = 2) 
